@@ -1,0 +1,121 @@
+<div class="review-card-{{ section.id }}">
+  {% if block.settings.product_image != blank %}
+    <img 
+      src="{{ block.settings.product_image | img_url: '600x600' }}" 
+      alt="{{ block.settings.product_title | escape }}" 
+      class="review-card-product-{{ section.id }}">
+  {% endif %}
+
+{% if block.settings.rating %}
+    <div class="review-card-stars-{{ section.id }}">
+      {% assign stars = block.settings.rating | default: 5 %}
+      {% for i in (1..stars) %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="{{ section.settings.star_color }}" viewBox="0 0 24 24">
+          <path d="M12 .587l3.668 7.431L24 9.588l-6 5.849L19.335 24 12 19.897 4.665 24 6 15.437 0 9.588l8.332-1.57z"/>
+        </svg>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if block.settings.review_title != blank %}
+    <h3>{{ block.settings.review_title }}</h3>
+  {% endif %}
+
+  {% if block.settings.review_text != blank %}
+    <p class="review-description">{{ block.settings.review_text }}</p>
+  {% endif %}
+
+  <div class="review-card-author-{{ section.id }}">
+    {% if block.settings.author_image != blank %}
+      <img 
+        src="{{ block.settings.author_image | img_url: '100x100' }}" 
+        alt="{{ block.settings.author_name | escape }}" 
+        class="review-card-author-image-{{ section.id }}">
+    {% endif %}
+
+    <div class="review-card-author-info-{{ section.id }}">
+      {% if block.settings.author_name != blank %}
+        <h4>{{ block.settings.author_name }}</h4>
+      {% endif %}
+      
+      {% if block.settings.verified %}
+        <span class="review-card-verified-{{ section.id }}">Verified Buyer</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .review-card-{{ section.id }} {
+    background-color: {{ section.settings.card_bg_color }};
+    border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+    padding: {{ section.settings.card_padding }}px;
+    transition: all 0.3s ease;
+  }
+
+  .review-card-{{ section.id }}:hover {
+    box-shadow: {{ section.settings.card_hover_shadow }};
+    transform: translateY({{ section.settings.card_hover_lift }}px);
+  }
+
+  .review-card-product-{{ section.id }} {
+    width: 100%;
+    height: {{ section.settings.product_image_height }}px;
+    object-fit: cover;
+    border-radius: {{ section.settings.product_image_radius }}px;
+    margin-bottom: {{ section.settings.product_image_margin }}px;
+  }
+
+  .review-card-stars-{{ section.id }} {
+    display: flex;
+    gap: {{ section.settings.star_gap }}px;
+    margin-bottom: {{ section.settings.stars_bottom_margin }}px;
+  }
+
+  .review-card-stars-{{ section.id }} svg {
+    width: {{ section.settings.star_size }}px;
+    height: {{ section.settings.star_size }}px;
+    fill: {{ section.settings.star_color }};
+  }
+
+  .review-card-{{ section.id }} h3 {
+    font-size: {{ section.settings.review_title_size }}px;
+    font-weight: {{ section.settings.review_title_weight }};
+    color: {{ section.settings.review_title_color }};
+    margin: 0 0 {{ section.settings.title_bottom_margin }}px 0;
+  }
+
+  .review-card-{{ section.id }} .review-description {
+    font-size: {{ section.settings.review_text_size }}px;
+    color: {{ section.settings.review_text_color }};
+    line-height: {{ section.settings.review_text_line_height }};
+    margin: 0;
+  }
+
+  .review-card-author-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: {{ section.settings.author_bottom_margin }}px;
+  }
+
+  .review-card-author-image-{{ section.id }} {
+    width: {{ section.settings.author_image_size }}px;
+    height: {{ section.settings.author_image_size }}px;
+    border-radius: {{ section.settings.author_image_radius }}%;
+    object-fit: cover;
+  }
+
+  .review-card-author-info-{{ section.id }} h4 {
+    font-size: {{ section.settings.author_name_size }}px;
+    font-weight: {{ section.settings.author_name_weight }};
+    color: {{ section.settings.author_name_color }};
+    margin: 0 0 4px 0;
+  }
+
+  .review-card-verified-{{ section.id }} {
+    font-size: {{ section.settings.verified_text_size }}px;
+    color: {{ section.settings.verified_text_color }};
+  }
+</style>
