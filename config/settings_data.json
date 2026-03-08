@@ -405,9 +405,9 @@
                         "type": "announcement",
                         "settings": {
                             "link": "",
-                            "content": "<p>Celebrate Mother's Day & EID! Use promo code <strong>WILLYEID2026<\\/strong> at checkout.<\\/p>",
+                            "content": "<p>Celebrate Mother's Day & EID! Use promo code <strong>WILLYEID2026<\/strong> at checkout.<\/p>",
                             "adding_border": false,
-                            "countdown": "2023\\/12\\/26",
+                            "countdown": "2023\/12\/26",
                             "txt_day": "days",
                             "dayx": 0
                         }
@@ -427,7 +427,7 @@
                     "height": 45,
                     "fontsize": 12,
                     "cl": "#ffffff",
-                    "bg": "#e91e63",
+                    "bg": "#092e61",
                     "bg_op": 100,
                     "close": "1",
                     "cl_btn": "#ffffff",
